@@ -6,17 +6,17 @@ def solution(new_id):
         elif s.isupper():
             idList.append(s.lower())
         elif s == ".":
-            if idList and idList[len(idList) - 1] != '.':
+            if idList and idList[-1] != '.':
                 idList.append(s)
         if len(idList) == 15:
             break
             
-    while(idList and idList[len(idList)-1] == '.'):
+    while(idList and idList[-1] == '.'):
         idList.pop()
         
     if not idList:
         idList.append('a')
     
     while(len(idList) < 3):
-        idList.append(idList[len(idList)-1])
+        idList.append(idList[-1])
     return ''.join(idList)
