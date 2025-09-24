@@ -1,5 +1,4 @@
 def solution(phone_book):
-    phone_book.sort()
     pb = {}
     for s in phone_book:
         p = pb
