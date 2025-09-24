@@ -8,8 +8,9 @@ def solution(phone_book):
                 if end == i or 'x' in p[c]:
                     return False
             else:
-                p[c] = {}
-                if end == i:
+                if end != i:
+                    p[c] = {}
+                else:
                     p[c] = {'x':''}
             p = p[c]
     return True
