@@ -1,16 +1,13 @@
 def solution(k, dungeons):
-    return len(dungeons) - go(k, dungeons, len(dungeons))
+    visit = [0 for _ in range(len(dungeons))]
+    return go(k, dungeons, 0, visit)
 
-def go(k, dungeons, m):
+def go(k, dungeons, m, visit):
     for i in range(len(dungeons)):
-        if k >= dungeons[i][0]:
-            temp = dungeons.pop(i)
-            if not dungeons:
-                m = 0
-            k -= temp[1]
-            m = min(m, go(k, dungeons, m))
-            dungeons.insert(i, temp)
-            k += temp[1]
-        else:
-            m = min(m, len(dungeons))
+        if k >= dungeons[i][0] and visit[i] == 0:
+            visit[i] = 1
+            k -= dungeons[i][1]
+            m = max(go(k, dungeons, m, visit), sum(visit))
+            visit[i] = 0
+            k += dungeons[i][1]
     return m
