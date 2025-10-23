@@ -15,9 +15,7 @@ def solution(n, wires):
             if not tmp in treeA:
                 treeA.add(tmp)
                 leftNode = leftNode + tree[tmp]
-        treeALen = len(treeA)
-        treeBLen = n - treeALen
-        answer = min(answer, abs(treeALen - treeBLen))
+        answer = min(answer, abs(n - len(treeA)*2))
         
     return answer
             
